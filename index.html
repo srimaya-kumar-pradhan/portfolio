@@ -17,11 +17,48 @@
 </head>
 
 <body>
-    <!-- Loading   Screen -->
+    <!-- Loading Screen -->
     <div id="loader" class="loader-container">
-        <!-- From Uiverse.io by AatreyuShau -->
-        <!-- From Uiverse.io by mobinkakei -->
-        <span class="loader"></span>
+        <!-- From Uiverse.io by tmpMonster -->
+        <div class="matrix-loader-wrapper">
+            <div class="matrix-loader">
+                <div class="cube">
+                    <div class="layer l1">
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                    </div>
+                    <div class="layer l2">
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                    </div>
+                    <div class="layer l3">
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     </div>
 
@@ -594,7 +631,7 @@
             };
 
             // Normal load
-            window.addEventListener('load', () => setTimeout(removeLoader, 3000));
+            window.addEventListener('load', () => setTimeout(removeLoader, 5000));
 
             // Fallback 1: DOMContentLoaded (if load hangs)
             document.addEventListener('DOMContentLoaded', () => setTimeout(removeLoader, 3000));
