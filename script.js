@@ -5,26 +5,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
     const navLinksItems = document.querySelectorAll('.nav-links li a');
 
-    hamburger.addEventListener('click', () => {
-        // Toggle Nav
-        navLinks.classList.toggle('nav-active');
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            // Toggle Nav
+            navLinks.classList.toggle('nav-active');
 
-        // Burger Animation
-        hamburger.classList.toggle('toggle');
-    });
+            // Burger Animation
+            hamburger.classList.toggle('toggle');
+        });
+    }
 
     // Close mobile menu when a link is clicked
-    navLinksItems.forEach(link => {
-        link.addEventListener('click', () => {
-            if (navLinks.classList.contains('nav-active')) {
-                navLinks.classList.remove('nav-active');
-                hamburger.classList.remove('toggle');
-            }
+    if (navLinksItems) {
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks && navLinks.classList.contains('nav-active')) {
+                    navLinks.classList.remove('nav-active');
+                    if (hamburger) {
+                        hamburger.classList.remove('toggle');
+                    }
+                }
+            });
         });
-    });
+    }
 
     // Scroll Animations
-    const revealElements = document.querySelectorAll('.section-title, .about-content, .skills-grid, .project-card, .timeline-item');
+    const revealElements = document.querySelectorAll('.section-title, .about-content, .skills-grid, .project-panel, .timeline-item');
 
     // Add 'reveal' class initially to elements we want to animate
     revealElements.forEach(el => el.classList.add('reveal'));
@@ -59,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Header offset
                 const headerOffset = 70;
                 const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
                 window.scrollTo({
                     top: offsetPosition,
@@ -124,25 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     logVisit();
 });
 
-/* Loader Initialization */
-const removeLoader = () => {
-    const loader = document.getElementById('loader');
-    if (loader && !loader.classList.contains('fade-out')) {
-        loader.classList.add('fade-out');
-        // Remove from DOM after transition
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 800);
-    }
-};
 
-window.addEventListener('load', () => {
-    // Minimum load time of 1.5s to show off the animation
-    setTimeout(removeLoader, 1500);
-});
-
-// Fallback: Force remove loader after 4 seconds to prevent getting stuck
-setTimeout(removeLoader, 4000);
 
 
 
