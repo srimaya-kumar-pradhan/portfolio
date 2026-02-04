@@ -464,42 +464,116 @@ ul {
     transform: translateY(0);
 }
 
-/* About Section */
-.about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+/* About Section Card */
+.about-card-container {
+    display: flex;
+    justify-content: center;
     align-items: center;
+    padding: 2rem 0;
 }
 
-.about-text p {
-    margin-bottom: 1.5rem;
-    color: var(--text-muted);
+.card {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    /* Increased for better reading */
+    background-color: #f2f8f9;
+    border-radius: 10px;
+    padding: 2.5em 1.5em;
+    margin: 12px auto;
+    text-decoration: none;
+    z-index: 0;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #c3e6ec, #a7d1d9);
+    font-family: var(--font-main);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
 }
 
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+.card-title {
+    color: #262626;
+    font-size: 1.8em;
+    line-height: normal;
+    font-weight: 700;
+    margin-bottom: 0.8em;
+    transition: all 0.5s ease-out;
 }
 
-.stat-card {
-    background-color: var(--bg-alt);
-    padding: 1.5rem;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
+.small-desc {
+    font-size: 1.05em;
+    font-weight: 400;
+    line-height: 1.6em;
+    color: #452c2c;
+    transition: all 0.5s ease-out;
 }
 
-.stat-card h3 {
-    font-size: 1.1rem;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
+.go-corner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 2.5em;
+    height: 2.5em;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+    border-radius: 0 4px 0 32px;
 }
 
-.stat-card p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
+.go-arrow {
+    margin-top: -4px;
+    margin-right: -4px;
+    color: white;
+    font-family: courier, sans;
+    font-size: 1.2rem;
 }
+
+.card:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: -16px;
+    right: -16px;
+    background: linear-gradient(135deg, var(--bg-color), var(--bg-alt));
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+    transition: transform 0.45s ease-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card:hover:before {
+    transform: scale(45);
+    /* Increased scale to cover larger card */
+}
+
+.card:hover .small-desc {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.card:hover .card-title {
+    color: #ffffff;
+}
+
+/* Mobile adjustments for card */
+@media screen and (max-width: 768px) {
+    .card {
+        padding: 2em 1.2em;
+        max-width: 90%;
+    }
+
+    .card-title {
+        font-size: 1.5em;
+    }
+}
+
 
 /* Skills */
 .skills-grid {
@@ -1056,104 +1130,10 @@ ul {
 }
 
 
-/* About Card Design */
-/* About - Book Design */
-.book {
-    position: relative;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 800px;
-    min-height: 500px;
-    /* Constraints for better fit */
-    background-color: var(--bg-alt);
-    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.5);
-    transform: preserve-3d;
-    perspective: 2000px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-main);
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-.cover {
-    top: 0;
-    left: 0;
-    position: absolute;
-    background-color: var(--primary);
-    /* Cover color matches theme */
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-    transform-origin: 0;
-    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    overflow: hidden;
-}
-
-/* Add a gradient or pattern to the cover for texture */
-.cover::before {
-    content: '';
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent 45%, rgba(0, 0, 0, 0.1) 50%, transparent 55%);
-    background-size: 20px 20px;
-}
-
-.book:hover .cover {
-    transform: rotateY(-80deg);
-}
-
-.book p {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--text-main);
-}
-
-.cover-content {
-    text-align: center;
-    color: var(--bg-color);
-    z-index: 3;
-}
-
-.cover-content h3 {
-    font-size: 3rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.cover-content p {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-top: 0.5rem;
-}
+/* Removed unused book design */
 
 /* ---------------- Loader ---------------- */
-@keyframes autoHideLoader {
-    0% {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    90% {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    100% {
-        opacity: 0;
-        visibility: hidden;
-    }
-}
-
+/* ---------------- Quantum Loader ---------------- */
 .loader-container {
     position: fixed;
     top: 0;
@@ -1163,129 +1143,112 @@ ul {
     background-color: #05050a;
     z-index: 9999;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: opacity 2s ease-out, visibility 0.8s;
-    animation: autoHideLoader 6s forwards;
-    /* Absolute CSS fallback */
+    transition: opacity 1s ease-out, visibility 0.8s;
 }
 
 .loader-container.fade-out {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    animation: none;
-    /* Disable fallback if JS worked */
 }
 
-/* New Eyes Loader */
-.loader {
+.quantum-loader {
     position: relative;
-    width: 108px;
+    width: 120px;
+    height: 120px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
 
-.loader::after,
-.loader::before {
-    content: "";
-    display: inline-block;
-    width: 48px;
-    height: 48px;
-    background-color: #fff;
-    background-image: radial-gradient(circle 14px, #0d161b 100%, transparent 0);
-    background-repeat: no-repeat;
+.particle {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: var(--primary);
     border-radius: 50%;
-    animation: eyeMove 10s infinite, blink 10s infinite;
+    filter: blur(2px) drop-shadow(0 0 10px var(--primary));
 }
 
-@keyframes eyeMove {
-
-    0%,
-    10% {
-        background-position: 0px 0px;
-    }
-
-    13%,
-    40% {
-        background-position: -15px 0px;
-    }
-
-    43%,
-    70% {
-        background-position: 15px 0px;
-    }
-
-    73%,
-    90% {
-        background-position: 0px 15px;
-    }
-
-    93%,
-    100% {
-        background-position: 0px 0px;
-    }
+.particle:nth-child(1) {
+    animation: orbit1 2s linear infinite;
 }
 
-@keyframes blink {
-
-    0%,
-    10%,
-    12%,
-    20%,
-    22%,
-    40%,
-    42%,
-    60%,
-    62%,
-    70%,
-    72%,
-    90%,
-    92%,
-    98%,
-    100% {
-        height: 48px;
-    }
-
-    11%,
-    21%,
-    41%,
-    61%,
-    71%,
-    91%,
-    99% {
-        height: 18px;
-    }
+.particle:nth-child(2) {
+    animation: orbit2 2s linear infinite;
+    animation-delay: -0.66s;
 }
 
-#gnd {
-    translate: -140px 0;
-    rotate: 10deg;
-    z-index: -1;
-    filter: blur(0.5px) drop-shadow(1px 3px 5px #000000);
-    opacity: 0.25;
-    animation: scroll 5s infinite linear;
+.particle:nth-child(3) {
+    animation: orbit3 2s linear infinite;
+    animation-delay: -1.33s;
 }
 
-@keyframes scroll {
-    0% {
-        transform: translateY(25px) translate(50px);
-        opacity: 0;
-    }
+.orbit {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    border-radius: 50%;
+}
 
-    33% {
-        opacity: 0.25;
-    }
-
-    66% {
-        opacity: 0.25;
+@keyframes orbit1 {
+    from {
+        transform: rotate(0deg) translateX(50px) rotate(0deg);
     }
 
     to {
-        transform: translateY(-50px) translate(-100px);
-        opacity: 0;
+        transform: rotate(360deg) translateX(50px) rotate(-360deg);
     }
 }
+
+@keyframes orbit2 {
+    from {
+        transform: rotate(120deg) translateX(50px) rotate(-120deg);
+    }
+
+    to {
+        transform: rotate(480deg) translateX(50px) rotate(-480deg);
+    }
+}
+
+@keyframes orbit3 {
+    from {
+        transform: rotate(240deg) translateX(50px) rotate(-240deg);
+    }
+
+    to {
+        transform: rotate(600deg) translateX(50px) rotate(-600deg);
+    }
+}
+
+.loading-text {
+    margin-top: 2rem;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary);
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    animation: pulseText 2s ease-in-out infinite;
+}
+
+@keyframes pulseText {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(0.95);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
 
 /* Carousel 3D Cards */
 .carousel-wrapper {

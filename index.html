@@ -19,47 +19,13 @@
 <body>
     <!-- Loading Screen -->
     <div id="loader" class="loader-container">
-        <!-- From Uiverse.io by tmpMonster -->
-        <div class="matrix-loader-wrapper">
-            <div class="matrix-loader">
-                <div class="cube">
-                    <div class="layer l1">
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                    </div>
-                    <div class="layer l2">
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                    </div>
-                    <div class="layer l3">
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                    </div>
-                </div>
-            </div>
+        <div class="quantum-loader">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="orbit"></div>
         </div>
-    </div>
+        <div class="loading-text">Initializing Systems...</div>
     </div>
 
     <!-- Matrix Background -->
@@ -130,20 +96,23 @@
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title glitch" data-text="About Me">About Me</h2>
-            <div class="card">
-                <p class="card-title">About Me</p>
-                <p class="small-desc">
-                    I am a dedicated researcher and student with a profound passion for understanding the fundamental
-                    laws of nature through the lens of computation. My academic journey is driven by curiosity in
-                    <strong>Theoretical Physics</strong> and <strong>Advanced Mathematics</strong>, which I apply to
-                    solve complex problems in <strong>Artificial Intelligence</strong>.
-                </p>
-                <p class="small-desc">
-                    My goal is to contribute to cutting-edge research, particularly in areas like Scientific Machine
-                    Learning (SciML).
-                </p>
-                <div class="go-corner">
-                    <div class="go-arrow">→</div>
+            <div class="about-card-container">
+                <div class="card">
+                    <p class="card-title">About Me</p>
+                    <p class="small-desc">
+                        I am a dedicated researcher and student with a profound passion for understanding the
+                        fundamental
+                        laws of nature through the lens of computation. My academic journey is driven by curiosity in
+                        <strong>Theoretical Physics</strong> and <strong>Advanced Mathematics</strong>, which I apply to
+                        solve complex problems in <strong>Artificial Intelligence</strong>.
+                    </p>
+                    <p class="small-desc" style="margin-top: 1rem;">
+                        My goal is to contribute to cutting-edge research, particularly in areas like Scientific Machine
+                        Learning (SciML) and Computational Physics.
+                    </p>
+                    <div class="go-corner">
+                        <div class="go-arrow">→</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -601,22 +570,21 @@
                 const loader = document.getElementById('loader');
                 if (loader) {
                     loader.classList.add('fade-out');
-                    // Ensure it doesn't block clicks even if transition fails
                     loader.style.pointerEvents = 'none';
                     setTimeout(() => {
                         loader.style.display = 'none';
-                    }, 800);
+                    }, 1200); // Wait for transition
                 }
             };
 
             // Normal load
-            window.addEventListener('load', () => setTimeout(removeLoader, 5000));
+            window.addEventListener('load', () => setTimeout(removeLoader, 1500));
 
-            // Fallback 1: DOMContentLoaded (if load hangs)
-            document.addEventListener('DOMContentLoaded', () => setTimeout(removeLoader, 3000));
+            // Fallback 1: DOMContentLoaded
+            document.addEventListener('DOMContentLoaded', () => setTimeout(removeLoader, 2000));
 
             // Fallback 2: Absolute safety timer
-            setTimeout(removeLoader, 5000);
+            setTimeout(removeLoader, 4000);
         })();
     </script>
     <script src="script.js?v=2"></script>
