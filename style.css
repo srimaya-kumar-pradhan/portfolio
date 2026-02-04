@@ -1099,6 +1099,23 @@ ul {
 }
 
 /* ---------------- Loader ---------------- */
+@keyframes autoHideLoader {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    90% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 .loader-container {
     position: fixed;
     top: 0;
@@ -1111,12 +1128,16 @@ ul {
     justify-content: center;
     align-items: center;
     transition: opacity 0.8s ease-out, visibility 0.8s;
+    animation: autoHideLoader 6s forwards;
+    /* Absolute CSS fallback */
 }
 
 .loader-container.fade-out {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    animation: none;
+    /* Disable fallback if JS worked */
 }
 
 .loader {
