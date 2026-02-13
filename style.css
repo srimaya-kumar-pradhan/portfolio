@@ -2415,111 +2415,70 @@ textarea.input {
 /* Light Button Design (Uiverse.io by SalladShooter) */
 /* Scaled down version for social links */
 
-.light-button {
-    display: inline-block;
-    margin: 0 10px;
-    /* Spacing between buttons */
-}
-
-.light-button button.bt {
-    position: relative;
-    height: 100px;
-    /* Scaled down from 200px */
+/* Social Media Icons Styling */
+.social-wrapper {
     display: flex;
-    align-items: flex-end;
-    outline: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    /* Reset */
-}
-
-.light-button button.bt .button-holder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 50px;
-    /* Scaled down from 100px */
-    width: 50px;
-    /* Scaled down from 100px */
-    background-color: #0a0a0a;
-    border-radius: 5px;
-    color: #0f0f0f;
-    font-weight: 700;
-    transition: 300ms;
-    outline: #0f0f0f 2px solid;
-    outline-offset: 2px;
-    z-index: 10;
-}
-
-.light-button button.bt .button-holder svg {
-    height: 25px;
-    /* Scaled down from 50px */
-    fill: #0f0f0f;
-    transition: 300ms;
-}
-
-.light-button button.bt .button-holder p {
-    display: none;
-    /* Hide text for cleaner look or style it smaller if needed */
-}
-
-.light-button button.bt .light-holder {
-    position: absolute;
-    height: 100px;
-    /* Scaled down from 200px */
-    width: 50px;
-    /* Match button width */
-    display: flex;
-    flex-direction: column;
+    gap: 28px;
+    margin-top: 2rem;
     align-items: center;
-    top: -5px;
-    /* Adjust based on scale */
 }
 
-.light-button button.bt .light-holder .dot {
-    position: absolute;
-    top: 0;
-    width: 5px;
-    /* Scaled */
-    height: 5px;
-    /* Scaled */
-    background-color: #0a0a0a;
-    border-radius: 10px;
-    z-index: 2;
+.icon {
+    display: inline-flex;
+    width: 60px;
+    height: 60px;
+    text-decoration: none;
+    font-size: 25px;
+    outline: 2px solid white;
+    border-radius: 50%;
+    transition-property: outline-offset, outline-color, background-color;
+    transition-duration: 0.25s;
+    color: white;
+    background-color: transparent;
 }
 
-.light-button button.bt .light-holder .light {
-    position: absolute;
-    top: 0;
-    width: 100px;
-    /* Scaled down width of light cone */
-    height: 100px;
-    /* Scaled down height */
-    clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
-    background: transparent;
-    opacity: 0.5;
+.icon:hover {
+    outline-offset: 4px;
 }
 
-.light-button button.bt:hover .button-holder svg {
-    fill: rgba(56, 189, 248, 1);
-    /* Use primary color #38bdf8 */
+.icon svg {
+    margin: auto;
+    width: 31px;
 }
 
-.light-button button.bt:hover .button-holder {
-    color: rgba(56, 189, 248, 1);
-    outline: rgba(56, 189, 248, 1) 2px solid;
-    outline-offset: 2px;
+.icon-instagram:hover {
+    background-color: #e4405f;
+    outline-color: #e4405f;
 }
 
-.light-button button.bt:hover .light-holder .light {
-    background: rgb(255, 255, 255);
-    background: linear-gradient(180deg,
-            rgba(56, 189, 248, 1) 0%,
-            rgba(255, 255, 255, 0) 75%,
-            rgba(255, 255, 255, 0) 100%);
+.icon-github:hover {
+    background-color: #555555;
+    outline-color: #555555;
+}
+
+.icon-in:hover {
+    background-color: #0a66c2;
+    outline-color: #0a66c2;
+}
+
+.icon-gmail:hover {
+    background-color: #d14836;
+    outline-color: #d14836;
+}
+
+.icon:hover svg {
+    animation: shake_icon 0.25s;
+}
+
+@keyframes shake_icon {
+    10% {
+        transform: rotate(15deg);
+    }
+
+    20% {
+        transform: rotate(-15deg);
+    }
 }
 
 
