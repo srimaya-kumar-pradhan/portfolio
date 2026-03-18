@@ -696,130 +696,143 @@ ul {
     font-weight: 500;
 }
 
-/* Projects */
-.projects-grid {
-    display: flex;
-    /* Use flex to center the single accordion container if needed, or keeping grid is fine but 1 col */
-    justify-content: center;
+/* Projects Grid Modern */
+.projects-grid-modern {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
     width: 100%;
 }
 
-/* Projects - Accordion Design */
-.project-accordion-card {
-    width: 100%;
-    height: 350px;
-    /* Increased height for better content fit */
-    border-radius: 4px;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(10px);
-    display: flex;
-    gap: 5px;
-    padding: .4em;
-    /* Ensure it fits in the grid */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+.project-card {
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.project-panel {
-    height: 100%;
-    flex: 1;
-    overflow: hidden;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: all .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    background: rgba(30, 41, 59, 0.8);
-    border: 1px solid var(--primary);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.project-panel:hover {
-    flex: 10;
-    /* Expand significantly */
-    background: rgba(15, 23, 42, 0.95);
-}
-
-.project-panel-content {
-    min-width: 20em;
-    /* Ensure text doesn't wrap weirdly when collapsed */
-    padding: 1.5em;
-    text-align: center;
-    transform: rotate(-90deg);
-    transition: all .5s;
-    color: var(--primary);
+    border-radius: 16px;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+    min-height: 350px;
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    opacity: 0.8;
+    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+    pointer-events: none;
 }
 
-.project-panel:hover .project-panel-content {
-    transform: rotate(0);
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: rgba(56, 189, 248, 0.3);
+}
+
+.project-card:hover::before {
     opacity: 1;
-    min-width: 100%;
-    /* Fill the expanded space */
 }
 
-/* Custom styling for inner elements of the project */
-.project-panel h3 {
-    font-size: 1.2rem;
-    letter-spacing: .1em;
-    text-transform: uppercase;
+.project-card-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.project-card h3 {
+    font-size: 1.4rem;
+    color: var(--primary);
     margin-bottom: 0.5rem;
-    white-space: nowrap;
-    /* Keep title on one line when collapsed/rotating */
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
-.project-panel p {
+.project-card .subtitle {
     font-size: 0.9rem;
     color: var(--text-muted);
     margin-bottom: 1rem;
-    display: none;
-    /* Hide details when collapsed */
-    max-width: 300px;
-    line-height: 1.5;
+    font-style: normal;
+    font-weight: 400;
 }
 
-.project-panel:hover p {
-    display: block;
-    /* Show details when expanded */
-    animation: fadeIn 0.5s 0.3s forwards;
-    /* Delay fade in */
-    opacity: 0;
+.project-card p {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex: 1;
+    opacity: 0.85;
 }
 
-.project-panel:hover h3 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-    color: #fff;
-}
-
-.project-panel-links {
-    margin-top: 1rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s 0.4s;
-}
-
-.project-panel:hover .project-panel-links {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.project-panel-tech {
+.project-tech-tags {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1rem;
-    opacity: 0;
+    margin-bottom: 1.5rem;
 }
 
-.project-panel:hover .project-panel-tech {
-    opacity: 1;
-    transition: opacity 0.5s 0.2s;
+.project-tech-tags span {
+    background: rgba(15, 23, 42, 0.6);
+    color: var(--primary);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-tech-tags span {
+    border-color: rgba(56, 189, 248, 0.4);
+    background: rgba(56, 189, 248, 0.05);
+}
+
+.project-card-links {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.btn-project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.2rem;
+    background: transparent;
+    color: var(--text-main);
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+}
+
+.btn-project-link:hover {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-project-link svg {
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.btn-project-link:hover svg {
+    transform: scale(1.1);
 }
 
 @keyframes fadeIn {
@@ -1052,39 +1065,9 @@ ul {
     }
 
     /* Projects Mobile */
-    .project-accordion-card {
-        flex-direction: column;
-        height: auto;
-        /* Allow height to grow */
-    }
-
-    .project-panel {
-        width: 100%;
-        height: 150px;
-        /* Fixed height for collapsed state */
-        border-right: none;
-        border-bottom: 1px solid var(--primary);
-    }
-
-    .project-panel:hover,
-    .project-panel:active,
-    .project-panel:focus {
-        flex: none;
-        height: 400px;
-        /* Expanded height */
-    }
-
-    .project-panel-content {
-        transform: rotate(0);
-        /* No rotation on mobile */
-        padding: 1rem;
-        min-width: auto;
-    }
-
-    .project-panel h3 {
-        font-size: 1.1rem;
-        white-space: normal;
-        /* Allow wrapping */
+    .projects-grid-modern {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     /* General Padding */
